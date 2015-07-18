@@ -1,7 +1,7 @@
 {
   "name": "async-emit",
   "description": "Asynchronous event emitter library (for JS)",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "main": "AsyncEmit.js",
   "homepage": "https://github.com/Densaugeo/AsyncEmit",
   "repository": {
