@@ -1,10 +1,10 @@
 var assert = require('assert');
 var sinon = require('sinon');
-var DF = require('..');
+var AE = require('..');
 
-// DFTestNode provides a DF.Node with a coule events already set up for testing
-var DFTestNode = function DFTestNode() {
-  DF.Node.call(this);
+// AETestNode provides a AE.Node with a coule events already set up for testing
+var AETestNode = function AETestNode() {
+  AE.Node.call(this);
   
   this.onFoo = sinon.spy();
   
@@ -18,17 +18,17 @@ var DFTestNode = function DFTestNode() {
     return result;
   });
   
-  DF.pipe(this, 'add', this, 'onAdd');
-  DF.pipe(this, 'foo', this, 'onFoo');
+  AE.pipe(this, 'add', this, 'onAdd');
+  AE.pipe(this, 'foo', this, 'onFoo');
 }
-DFTestNode.prototype = Object.create(DF.Node.prototype);
-DFTestNode.prototype.constructor = DFTestNode;
+AETestNode.prototype = Object.create(AE.Node.prototype);
+AETestNode.prototype.constructor = AETestNode;
 
-var nodeA = new DFTestNode();
+var nodeA = new AETestNode();
 
-suite('My 1st Mocha test suite (for DF)', function() {
+suite('My 1st Mocha test suite (for AE)', function() {
   beforeEach(function() {
-    nodeA = new DFTestNode();
+    nodeA = new AETestNode();
   });
   
   test('\'foo\' event should fire \'foo\' listener', function(done) {
@@ -50,7 +50,7 @@ suite('My 1st Mocha test suite (for DF)', function() {
   });
   
   test('\'foo\' event from node A should not fire \'foo\' listener on node B', function(done) {
-    var nodeB = new DFTestNode();
+    var nodeB = new AETestNode();
     
     nodeA.emit('foo');
     
@@ -109,7 +109,7 @@ suite('My 1st Mocha test suite (for DF)', function() {
       }
     }
     
-    DF.pipe(nodeA, 'recurse', nodeA, 'onrecurse');
+    AE.pipe(nodeA, 'recurse', nodeA, 'onrecurse');
     
     nodeA.emit('recurse');
   });
