@@ -1,0 +1,35 @@
+{
+  "name": "async-emit",
+  "description": "Asynchronous event emitter library (for JS)",
+  "version": "0.0.0",
+  "main": "AsyncEmit.js",
+  "homepage": "https://github.com/Densaugeo/AsyncEmit",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Densaugeo/AsyncEmit.git"
+  },
+  "keywords": [
+    "dataflow",
+    "events",
+    "asynchronous"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+  },
+  "authors": [
+    "Densaugeo <you@example.com> (http://www.madengineersworkshop.net/)"
+  ],
+  "ignore": [
+    ".git",
+    "node_modules",
+    "test",
+    ".gitignore",
+    ".jshintrc"
+  ],
+  "moduleType": [
+    "globals",
+    "node",
+    "amd"
+  ]
+}
