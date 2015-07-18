@@ -11,11 +11,11 @@ wget https://raw.githubusercontent.com/Densaugeo/AsyncEmit/master/AsyncEmit.js
 
 OR
 
-npm install --save git@github.com:Densaugeo/AsyncEmit.git
+npm install --save https://github.com/Densaugeo/AsyncEmit.git
 
 OR
 
-bower install --save git@github.com:Densaugeo/AsyncEmit.git
+bower install --save https://github.com/Densaugeo/AsyncEmit.git
 ~~~
 
 ## Import
