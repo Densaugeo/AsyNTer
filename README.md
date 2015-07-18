@@ -1,37 +1,126 @@
-# PersistentWS
+# AsyncEmit
 
-[![Code Climate](https://codeclimate.com/github/Densaugeo/PersistentWS/badges/gpa.svg)](https://codeclimate.com/github/Densaugeo/PersistentWS)
+Allows event to .emit() asynchronously - instead of being called immediately, event hadlers are added to the event queue
 
-Provides a constructor for WebSockets that automatically attempt to reconnect after being disconnected. Reconnection times start at ~5s for the first attempt, double after each failed attempt, and are randomized by +/- 10% to prevent clients from reconnecting at the exact same time after a server event.
+## Installation
 
-To install, add PersistentWS.js from this repo to your webserver root or install bower module persistent-ws
+Install with bower, npm, or link the AsyncEmit.js from from your html:
 
 ~~~
-wget https://raw.githubusercontent.com/Densaugeo/PersistentWS/master/PersistentWS.js
+wget https://raw.githubusercontent.com/Densaugeo/AsyncEmit/master/AsyncEmit.js
 
 OR
 
-bower install --save persistent-ws
+npm install --save git@github.com:Densaugeo/AsyncEmit.git
+
+OR
+
+bower install --save git@github.com:Densaugeo/AsyncEmit.git
 ~~~
 
-PersistentWS is then available from the PersistentWS.js file:
+## Import
+
+Supports node.js, AMD, and browser global modules.
 
 ~~~
-<script type="text/javascript" src="/PersistentWS.js"></script>
+In your html:
+<script type="text/javascript" src="/your/folders/AsyncEmit.js"></script>
 
-<!--Or link from your bower folder-->
-<script type="text/javascript" src="/bower_components/persistent-ws/PersistentWS.js"></script>
+Or in you node.js app:
+var AE = require('async-emit');
 
-<script type="text/javascript">
-var pws = new PersistentWS({url: 'wss://your.websocket/server'});
+Or with browserify:
+var AE = require('./your/folder/async-emit');
+~~~
 
-pws.addEventListener('message', function(message) {
-  console.log('Received: ' + message);
+## Usage
+
+AE nodes can emit events similar to EventEmitter:
+
+~~~
+var node = new AE.Node();
+
+node.on('foo', function() {
+  // Event handler stuff
 });
-</script>
+
+node.emit('foo'); // Sends event to the anonymous event handler
 ~~~
 
-.addEventListener() and .removeEventListener should be called on the PersistentWS object and not on the raw socket, to allow events to be reattached properly after reconnections. .onmessage, etc. are not supported at this time.
+They also have a pipe syntax:
+
+~~~
+var nodeA = new AE.Node();
+var nodeB = new AE.Node();
+
+nodeB.doBar = function() {
+  // Bar stuff
+}
+
+AE.pipe(nodeA, 'foo', nodeB, 'doBar');
+
+node.emit('foo'); // Sends event to nodeB.doBar()
+~~~
+
+By default, events handlers are not called immediately. They are added to the event queue:
+
+~~~
+var nodeA = new AE.Node();
+var called = false;
+
+node.on('foo', function() {
+  called = true;
+});
+
+node.emit('foo');
+
+called; // Still false
+
+setTimeout(function() {
+  called; // Now it's true
+}, 0);
+~~~
+
+However, events can still be emitted synchronously by using .emitSync() in place of .emit().
+
+With the asynchronous approach, event loops can run indefinitely without overfilling the stack, and an event handler can emit it's own event as a sort of tail recursion:
+
+~~~
+var node = new AE.Node();
+
+node.onrecurse = function() {
+  // Event handler stuff
+  
+  this.emit('recurse');
+}
+
+AE.pipe(node, 'recurse', node, 'onrecurse');
+
+node.emit('recurse'); // Keeps going and going, like a popular battery bunny
+~~~
+
+## Development
+
+To install with all development tools, clone this repo and use npm:
+
+~~~
+git clone git@github.com:Densaugeo/AsyncEmit.git
+
+npm install
+~~~
+
+Linter is JSHint, test runner is Mocha, documenter is Thoth. All have npm script hooks:
+
+~~~
+# Run linter
+npm run lint
+
+# Run tests
+npm run test
+
+# Refresh docs
+npm run doc
+~~~
 
 ## License
 
