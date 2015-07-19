@@ -1,7 +1,7 @@
 {
   "name": "asynter",
   "description": "Asynchronous event emitter library",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "main": "AsyNTer.js",
   "homepage": "https://github.com/Densaugeo/AsyNTer",
   "repository": {
@@ -14,7 +14,7 @@
     "asynchronous"
   ],
   "license": "MIT",
-  "private": true,
+  "private": false,
   "dependencies": {
   },
   "author": "Densaugeo <a@b.c> (http://www.madengineersworkshop.net/)",
