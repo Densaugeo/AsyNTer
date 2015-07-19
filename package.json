@@ -1,12 +1,12 @@
 {
-  "name": "async-emit",
-  "description": "Asynchronous event emitter library (for JS)",
-  "version": "0.1.1",
-  "main": "AsyncEmit.js",
-  "homepage": "https://github.com/Densaugeo/AsyncEmit",
+  "name": "asynter",
+  "description": "Asynchronous event emitter library",
+  "version": "0.1.2",
+  "main": "AsyNTer.js",
+  "homepage": "https://github.com/Densaugeo/AsyNTer",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Densaugeo/AsyncEmit.git"
+    "url": "https://github.com/Densaugeo/AsyNTer.git"
   },
   "keywords": [
     "dataflow",
@@ -21,12 +21,12 @@
   "files": [
     "doc",
     "bower.json",
-    "AsyncEmit.js",
+    "AsyNTer.js",
     "LICENSE",
     "package.json",
     "README.md"
   ],
-  "bugs": "https://github.com/Densaugeo/AsyncEmit/issues",
+  "bugs": "https://github.com/Densaugeo/AsyNTer/issues",
   "devDependencies": {
     "jshint": "~2.8.0",
     "sinon": "~1.15.4",
@@ -35,6 +35,6 @@
   "scripts": {
     "lint": "jshint *.js test/*.js",
     "test": "mocha",
-    "doc": "thoth AsyncEmit.js > doc/AsyncEmit.md"
+    "doc": "thoth AsyNTer.js > doc/AsyNTer.md"
   }
 }

@@ -1,10 +1,10 @@
 var assert = require('assert');
 var sinon = require('sinon');
-var AE = require('..');
+var AsyNTer = require('..');
 
-// AETestNode provides a AE.Node with a coule events already set up for testing
-var AETestNode = function AETestNode() {
-  AE.Node.call(this);
+// TestNode provides a AsyNTer.Node with a coule events already set up for testing
+var TestNode = function TestNode() {
+  AsyNTer.Node.call(this);
   
   this.onFoo = sinon.spy();
   
@@ -18,17 +18,17 @@ var AETestNode = function AETestNode() {
     return result;
   });
   
-  AE.pipe(this, 'add', this, 'onAdd');
-  AE.pipe(this, 'foo', this, 'onFoo');
+  AsyNTer.pipe(this, 'add', this, 'onAdd');
+  AsyNTer.pipe(this, 'foo', this, 'onFoo');
 }
-AETestNode.prototype = Object.create(AE.Node.prototype);
-AETestNode.prototype.constructor = AETestNode;
+TestNode.prototype = Object.create(AsyNTer.Node.prototype);
+TestNode.prototype.constructor = TestNode;
 
-var nodeA = new AETestNode();
+var nodeA = new TestNode();
 
-suite('My 1st Mocha test suite (for AE)', function() {
+suite('My 1st Mocha test suite (for AsyNTer)', function() {
   beforeEach(function() {
-    nodeA = new AETestNode();
+    nodeA = new TestNode();
   });
   
   test('\'foo\' event should fire \'foo\' listener', function(done) {
@@ -50,7 +50,7 @@ suite('My 1st Mocha test suite (for AE)', function() {
   });
   
   test('\'foo\' event from node A should not fire \'foo\' listener on node B', function(done) {
-    var nodeB = new AETestNode();
+    var nodeB = new TestNode();
     
     nodeA.emit('foo');
     
@@ -109,7 +109,7 @@ suite('My 1st Mocha test suite (for AE)', function() {
       }
     }
     
-    AE.pipe(nodeA, 'recurse', nodeA, 'onrecurse');
+    AsyNTer.pipe(nodeA, 'recurse', nodeA, 'onrecurse');
     
     nodeA.emit('recurse');
   });
