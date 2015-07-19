@@ -4,6 +4,8 @@
 
 [![Code Climate](https://codeclimate.com/github/Densaugeo/AsyNTer/badges/gpa.svg)](https://codeclimate.com/github/Densaugeo/AsyNTer)
 
+[![Build Status](https://travis-ci.org/Densaugeo/AsyNTer.svg?branch=master)](https://travis-ci.org/Densaugeo/AsyNTer)
+
 Allows event to .emit() asynchronously - instead of being called immediately, event hadlers are added to the event queue
 
 ## Installation
