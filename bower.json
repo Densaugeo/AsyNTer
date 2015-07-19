@@ -25,7 +25,8 @@
     "node_modules",
     "test",
     ".gitignore",
-    ".jshintrc"
+    ".jshintrc",
+    ".travis.yml"
   ],
   "moduleType": [
     "globals",
