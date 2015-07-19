@@ -30,7 +30,8 @@
   "devDependencies": {
     "jshint": "~2.8.0",
     "sinon": "~1.15.4",
-    "mocha": "~2.2.5"
+    "mocha": "~2.2.5",
+    "thoth-doc": "~0.0.0"
   },
   "scripts": {
     "lint": "jshint *.js test/*.js",
