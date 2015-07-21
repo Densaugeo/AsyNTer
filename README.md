@@ -8,7 +8,7 @@ Allows events to .emit() asynchronously - instead of being called immediately, e
 
 ## Installation
 
-Install with bower, npm, or link the AsyNTer.js from from your html:
+Install with bower, npm, or link AsyNTer.js from your html:
 
 ~~~
 wget https://raw.githubusercontent.com/Densaugeo/AsyNTer/master/AsyNTer.js
