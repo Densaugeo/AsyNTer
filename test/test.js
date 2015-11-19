@@ -27,7 +27,7 @@ TestNode.prototype.constructor = TestNode;
 var nodeA = new TestNode();
 
 suite('My 1st Mocha test suite (for AsyNTer)', function() {
-  beforeEach(function() {
+  setup(function() {
     nodeA = new TestNode();
   });
   
