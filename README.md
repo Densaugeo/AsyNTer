@@ -2,7 +2,7 @@
 
 Allows events to .emit() asynchronously - instead of being called immediately, event handlers are added to the event queue.
 
-[![npm](https://img.shields.io/npm/l/express.svg)]()
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Code Climate](https://codeclimate.com/github/Densaugeo/AsyNTer/badges/gpa.svg)](https://codeclimate.com/github/Densaugeo/AsyNTer)
 [![Build Status](https://travis-ci.org/Densaugeo/AsyNTer.svg?branch=master)](https://travis-ci.org/Densaugeo/AsyNTer)
 
