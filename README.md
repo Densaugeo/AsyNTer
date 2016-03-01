@@ -31,10 +31,10 @@ In your html:
 <script type="text/javascript" src="/your/folders/AsyNTer.js"></script>
 
 Or in you node.js app:
-var AsyNTer = require('async-emit');
+var asynter = require('async-emit');
 
 Or with browserify:
-var AsyNTer = require('./your/folder/async-emit');
+var asynter = require('./your/folder/async-emit');
 ~~~
 
 ## Usage
@@ -42,10 +42,10 @@ var AsyNTer = require('./your/folder/async-emit');
 AsyNTer nodes can emit events similar to EventEmitter:
 
 ~~~
-var node = new AsyNTer.Node();
+var node = new asynter.Node();
 
 node.on('foo', function() {
-  // Event handler stuff
+  console.log('foo');
 });
 
 node.emit('foo'); // Sends event to the anonymous event handler
@@ -54,22 +54,22 @@ node.emit('foo'); // Sends event to the anonymous event handler
 They also have a pipe syntax:
 
 ~~~
-var nodeA = new AsyNTer.Node();
-var nodeB = new AsyNTer.Node();
+var nodeA = new asynter.Node();
+var nodeB = new asynter.Node();
 
 nodeB.doBar = function() {
-  // Bar stuff
+  console.log('doBar');
 }
 
-AsyNTer.pipe(nodeA, 'foo', nodeB, 'doBar');
+asynter.pipe(nodeA, 'foo', nodeB, 'doBar');
 
-node.emit('foo'); // Sends event to nodeB.doBar()
+nodeA.emit('foo'); // Sends event to nodeB.doBar()
 ~~~
 
 By default, events handlers are not called immediately. They are added to the event queue:
 
 ~~~
-var nodeA = new AsyNTer.Node();
+var node = new asynter.Node();
 var called = false;
 
 node.on('foo', function() {
@@ -78,11 +78,11 @@ node.on('foo', function() {
 
 node.emit('foo');
 
-called; // Still false
+console.log(called); // Still false
 
-setTimeout(function() {
-  called; // Now it's true
-}, 0);
+setImmediate(function() {
+  console.log(called); // Now it's true
+});
 ~~~
 
 However, events can still be emitted synchronously by using .emitSync() in place of .emit().
@@ -90,17 +90,17 @@ However, events can still be emitted synchronously by using .emitSync() in place
 With the asynchronous approach, event loops can run indefinitely without overfilling the stack, and an event handler can emit it's own event as a sort of tail recursion:
 
 ~~~
-var node = new AsyNTer.Node();
+var node = new asynter.Node();
 
-node.onrecurse = function() {
-  // Event handler stuff
+node.onrecurse = function(i) {
+  console.log('Recursed ' + i + ' times');
   
-  this.emit('recurse');
+  this.emit('recurse', i + 1);
 }
 
-AsyNTer.pipe(node, 'recurse', node, 'onrecurse');
+asynter.pipe(node, 'recurse', node, 'onrecurse');
 
-node.emit('recurse'); // Keeps going and going, like a popular battery bunny
+node.emit('recurse', 0); // Keeps going and going, like a popular battery bunny
 ~~~
 
 ## Development
