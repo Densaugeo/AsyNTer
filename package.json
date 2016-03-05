@@ -1,41 +1,42 @@
 {
   "name": "asynter",
+  "version": "0.1.5",
   "description": "Asynchronous event emitter library",
-  "version": "0.1.4",
-  "main": "AsyNTer.js",
-  "homepage": "https://github.com/Densaugeo/AsyNTer",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Densaugeo/AsyNTer.git"
-  },
   "keywords": [
     "dataflow",
     "events",
     "asynchronous"
   ],
+  "homepage": "https://github.com/Densaugeo/AsyNTer",
+  "bugs": "https://github.com/Densaugeo/AsyNTer/issues",
   "license": "MIT",
-  "private": false,
-  "dependencies": {
-  },
-  "author": "Densaugeo <a@b.c> (http://www.madengineersworkshop.net/)",
+  "author": "Densaugeo (http://www.madengineersworkshop.net/)",
+  "contributors": [],
   "files": [
     "doc",
-    "bower.json",
     "AsyNTer.js",
+    "bower.json",
     "LICENSE",
     "package.json",
     "README.md"
   ],
-  "bugs": "https://github.com/Densaugeo/AsyNTer/issues",
+  "main": "AsyNTer.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Densaugeo/AsyNTer.git"
+  },
+  "scripts": {
+    "lint": "jshint *.js test/*.js",
+    "test": "mocha",
+    "doc": "thoth AsyNTer.js > doc/AsyNTer.md"
+  },
+  "config": {},
+  "dependencies": {},
   "devDependencies": {
     "jshint": "~2.8.0",
     "sinon": "~1.15.4",
     "mocha": "~2.2.5",
     "thoth-doc": "~0.0.0"
   },
-  "scripts": {
-    "lint": "jshint *.js test/*.js",
-    "test": "mocha",
-    "doc": "thoth AsyNTer.js > doc/AsyNTer.md"
-  }
+  "engines": {}
 }
