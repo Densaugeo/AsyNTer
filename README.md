@@ -4,7 +4,7 @@ Allows events to .emit() asynchronously - instead of being called immediately, e
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Code Climate](https://codeclimate.com/github/Densaugeo/AsyNTer/badges/gpa.svg)](https://codeclimate.com/github/Densaugeo/AsyNTer)
-[![Build Status](https://travis-ci.com/Densaugeo/AsyNTer.svg?branch=master)](https://travis-ci.com/github/Densaugeo/AsyNTer)
+[![Build Status](https://app.travis-ci.com/Densaugeo/AsyNTer.svg?branch=master)](https://app.travis-ci.com/github/Densaugeo/AsyNTer)
 
 ## Installation
 
